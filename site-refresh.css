@@ -680,9 +680,9 @@ svg {
   .hero img,
   .hero-section img,
   .hero picture,
-  .hero-visual,
-  .hero-image,
-  .hero-media {
+  body .hero-visual,
+  body .hero-image,
+  body .hero-media {
     position: relative !important;
     inset: auto !important;
     display: block !important;
@@ -753,5 +753,33 @@ svg {
     flex: 0 0 auto !important;
     min-height: 0 !important;
     margin-top: 0 !important;
+  }
+}
+/* Avoid generating a second blank hero panel on narrow layouts. */
+@media (max-width: 760px) {
+  .hero-visual,
+  .hero-image,
+  .hero-media {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+  }
+
+  body .hero-visual:empty,
+  body .hero-image:empty,
+  body .hero-media:empty {
+    display: none !important;
+  }
+
+  .hero-visual img,
+  .hero-image img,
+  .hero-media img,
+  .hero img {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
   }
 }
