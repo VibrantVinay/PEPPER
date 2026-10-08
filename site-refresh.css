@@ -204,10 +204,6 @@ svg {
   max-width: 100%;
 }
 
-* {
-  min-width: 0;
-}
-
 @media (max-width: 760px) {
   body {
     font-size: 15px;
@@ -420,5 +416,237 @@ svg {
   body .stats-grid,
   body .footer-grid {
     grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+/* Final small-screen layout pass: prevent overflow and keep controls usable. */
+@media (max-width: 760px) {
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  body *,
+  body *::before,
+  body *::after {
+    box-sizing: border-box !important;
+    min-width: 0;
+  }
+
+  img,
+  video,
+  iframe,
+  canvas,
+  svg {
+    max-width: 100% !important;
+  }
+
+  img,
+  video {
+    height: auto;
+  }
+
+  .container,
+  .section-inner,
+  .content-wrap,
+  .page-width,
+  main,
+  footer {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .container,
+  .section-inner,
+  .content-wrap,
+  .page-width,
+  main > section {
+    padding-left: clamp(18px, 5.5vw, 30px) !important;
+    padding-right: clamp(18px, 5.5vw, 30px) !important;
+  }
+
+  header,
+  .site-header,
+  .header,
+  .navbar {
+    max-width: 100vw !important;
+  }
+
+  .header-inner,
+  .nav-inner,
+  .navbar-inner,
+  .site-header .container {
+    min-height: 74px !important;
+    gap: 12px !important;
+  }
+
+  .brand,
+  .brand-lockup,
+  .site-brand,
+  .logo-lockup {
+    max-width: calc(100% - 58px) !important;
+    gap: 10px !important;
+  }
+
+  .brand-name,
+  .brand-subtitle,
+  .logo-text {
+    overflow-wrap: anywhere !important;
+  }
+
+  .hero,
+  .hero-section {
+    min-height: min(82svh, 760px) !important;
+    padding-top: clamp(52px, 12vw, 88px) !important;
+    padding-bottom: clamp(48px, 10vw, 76px) !important;
+  }
+
+  .hero-grid,
+  .hero-inner,
+  .hero-content,
+  .story-grid,
+  .split-section,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .hero h1,
+  h1 {
+    max-width: 100% !important;
+    font-size: clamp(2.8rem, 12.5vw, 5rem) !important;
+    line-height: .98 !important;
+    letter-spacing: -.045em !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  h2 {
+    max-width: 100% !important;
+    font-size: clamp(2.1rem, 8.5vw, 3.4rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -.035em !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  h3,
+  p,
+  li,
+  a,
+  button,
+  label {
+    overflow-wrap: anywhere;
+  }
+
+  .product-grid,
+  .products-grid,
+  .feature-grid,
+  .benefits-grid,
+  .process-grid,
+  .steps-grid,
+  .stats-grid,
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: clamp(14px, 3vw, 24px) !important;
+  }
+
+  .product-card,
+  .feature-card,
+  .process-card,
+  .step-card,
+  .stat-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .product-card img,
+  .product-image,
+  .feature-card img {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .product-card h3,
+  .feature-card h3 {
+    font-size: clamp(1.15rem, 4.8vw, 1.55rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  .hero-actions,
+  .button-row,
+  .cta-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+  }
+
+  button,
+  .button,
+  .btn,
+  input,
+  select,
+  textarea {
+    max-width: 100% !important;
+    font: inherit;
+  }
+
+  button,
+  .button,
+  .btn {
+    min-height: 48px;
+    white-space: normal !important;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100% !important;
+  }
+
+  .cookie-banner,
+  .cookie-consent,
+  .cookie-notice,
+  [role="dialog"] {
+    max-width: calc(100vw - 24px) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .product-grid,
+  .products-grid,
+  .feature-grid,
+  .benefits-grid,
+  .process-grid,
+  .steps-grid,
+  .stats-grid,
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .product-card img,
+  .product-image,
+  .feature-card img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero-actions,
+  .button-row,
+  .cta-row {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+
+  .hero-actions > *,
+  .button-row > *,
+  .cta-row > * {
+    width: 100% !important;
   }
 }
