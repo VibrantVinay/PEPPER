@@ -45,7 +45,7 @@ const server = http.createServer(async (req, res) => {
       const { name, email, company, country, product, message } = form;
       if (![name, email, country, product, message].every(value => typeof value === 'string' && value.trim()) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return send(res, 400, { error: 'Please complete the required fields with a valid email.' });
       const config = getConfig();
-      if (!config.apiKey || !config.adminEmail) return send(res, 503, { error: 'Email delivery is not configured yet. Please email exports@malabarcrown.example.' });
+      if (!config.apiKey || !config.adminEmail) return send(res, 503, { error: 'Email delivery is not configured yet. Please try again later.' });
       const safe = value => String(value || '').trim().slice(0, 4000).replace(/[<>]/g, '');
       const htmlContent = `<h2>Website enquiry</h2><p><b>Name:</b> ${safe(name)}</p><p><b>Email:</b> ${safe(email)}</p><p><b>Company:</b> ${safe(company) || 'Not provided'}</p><p><b>Country:</b> ${safe(country)}</p><p><b>Product:</b> ${safe(product)}</p><p><b>Message:</b><br>${safe(message).replace(/\n/g, '<br>')}</p>`;
       await sendBrevoEmail({ sender: { name: 'Malabar Crown Website', email: config.adminEmail }, to: [{ email: config.adminEmail }], replyTo: { name: safe(name), email: safe(email) }, subject: `Website enquiry: ${safe(product)}`, htmlContent }, config);

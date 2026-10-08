@@ -29,7 +29,7 @@ module.exports = async function handler(req, res) {
   const adminEmail = process.env.BREVO_ADMIN_EMAIL;
   const senderEmail = process.env.BREVO_SENDER_EMAIL || adminEmail;
   if (!apiKey || !adminEmail || !senderEmail) {
-    return json(res, 503, { error: 'Email delivery is not configured yet. Please email exports@malabarcrown.example.' });
+    return json(res, 503, { error: 'Email delivery is not configured yet. Please try again later.' });
   }
 
   const safeName = clean(name, 200);

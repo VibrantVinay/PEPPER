@@ -1,13 +1,18 @@
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav-links');
-menuButton.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
+const setMenuOpen = open => {
+  nav.classList.toggle('open', open);
   menuButton.setAttribute('aria-expanded', String(open));
   menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+};
+menuButton.addEventListener('click', () => {
+  setMenuOpen(!nav.classList.contains('open'));
 });
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false');
-}));
+nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+document.addEventListener('click', event => {
+  if (nav.classList.contains('open') && !nav.contains(event.target) && !menuButton.contains(event.target)) setMenuOpen(false);
+});
+document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenuOpen(false); });
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Small progressive enhancements: content remains visible when JS or motion support is unavailable.
@@ -61,6 +66,23 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('main section[id]').forEach(section => activeObserver.observe(section));
 }
 
+const cookieBanner = document.querySelector('#cookieBanner');
+const cookieChoice = document.cookie.match(/(?:^|;\s*)site_cookie_consent=(accepted|declined)(?:;|$)/);
+if (!cookieChoice) {
+  window.setTimeout(() => {
+    cookieBanner.classList.add('visible');
+    cookieBanner.setAttribute('aria-hidden', 'false');
+  }, 500);
+}
+function saveCookieChoice(choice) {
+  const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie = `site_cookie_consent=${choice}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+  cookieBanner.classList.remove('visible');
+  cookieBanner.setAttribute('aria-hidden', 'true');
+}
+document.querySelector('#cookieAccept').addEventListener('click', () => saveCookieChoice('accepted'));
+document.querySelector('#cookieDecline').addEventListener('click', () => saveCookieChoice('declined'));
+
 const contactForm = document.querySelector('#contactForm');
 const formStatus = document.querySelector('#formStatus');
 contactForm.addEventListener('submit', async event => {
@@ -79,28 +101,8 @@ contactForm.addEventListener('submit', async event => {
     formStatus.textContent = 'Thank you — your enquiry has been sent. We’ll be in touch soon.';
   } catch (error) {
     formStatus.textContent = error.message === 'Failed to fetch'
-      ? 'Email delivery is not configured yet. Please email exports@malabarcrown.example.'
+      ? 'Email delivery is not available right now. Please try again later.'
       : error.message;
   } finally { button.disabled = false; }
 });
 
-const dialog = document.querySelector('#adminDialog');
-document.querySelector('.admin-open').addEventListener('click', () => dialog.showModal());
-document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-const adminForm = document.querySelector('#adminForm');
-adminForm.addEventListener('submit', async event => {
-  event.preventDefault();
-  const button = adminForm.querySelector('button[type="submit"]');
-  const status = document.querySelector('#adminStatus');
-  const values = Object.fromEntries(new FormData(adminForm));
-  button.disabled = true; status.textContent = 'Saving securely…';
-  try {
-    const response = await fetch('/api/admin/brevo', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(values)
-    });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || 'Unable to save settings.');
-    adminForm.reset(); status.textContent = 'Settings saved. New contact enquiries will be emailed to the admin address.';
-  } catch (error) { status.textContent = error.message; }
-  finally { button.disabled = false; }
-});
