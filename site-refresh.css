@@ -93,6 +93,57 @@ body{background:var(--paper);color:var(--ink);font-size:14px;letter-spacing:.002
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+/* Vanilla, pistachio and yellow ochre palette. Typography and layout stay as designed. */
+:root{
+  --pine:#294735;--pine2:#587149;--cream:#f6efd9;--paper:#fffaf0;--ink:#30382c;
+  --muted:#747666;--gold:#b58b36;--line:#e1d8be;--shadow:0 12px 28px rgba(57,55,31,.08);
+  --pistachio:#e7ecd5;--vanilla:#fff7e5;--honey:#f3e3b8;--sage:#dce5d1;--pepper:#243c2c
+}
+.announcement{background:#263f2f;color:#f7f0dc}
+.site-header{background:rgba(255,250,240,.97);border-bottom-color:#e7dec8}
+.brand-mark{background:var(--pepper)}.brand-mark .brand-star{color:#e4bd63}
+.nav-links>a:not(.nav-cta){color:#59644e}.nav-links>a[aria-current="location"]{color:var(--pine)}
+.nav-cta,.button-green{background:var(--pine)}.nav-cta:hover,.button-green:hover{background:#385b40}
+.hero{background:var(--cream)}.hero-content .eyebrow,.hero-content .eyebrow.light{color:#657256}
+.hero h1,.intro h2,.section-heading h2,.contact h2{color:var(--ink)}
+.hero h1 em,.intro h2 em,.section-heading h2 em,.contact h2 em{color:var(--gold)}
+.hero-content>p{color:#606756}.hero .text-link{color:var(--pine);border-color:#c8c3ae}
+.hero-shade{background:linear-gradient(0deg,rgba(28,48,34,.48),rgba(35,55,38,.04) 62%)}
+.hero-stamp{border-color:rgba(255,248,226,.85);color:#fff8e6}.hero-stamp b{color:#f2d583}
+.trust-bar{background:#e9ecd8;border-color:#dde1ce}.trust-bar>div{color:#4b5b48}.trust-icon,.step-icon,.detail-icon{color:var(--gold)}
+.image-note{background:#fff8e8;border-color:#e6dcc4}.image-note span{color:#9a7734}.image-note b{color:var(--ink)}
+.numbers,.reach{background:var(--pepper)}.numbers h2,.reach h2{color:#fff9ec}
+.numbers h2 em,.reach h2 em{color:#e3bf67}.number-grid strong,.reach-stats strong{color:#efd17e}
+.number-grid>div,.reach-stats div{border-color:rgba(246,239,217,.25)}.number-grid label,.reach-copy>p,.reach-stats span{color:#e2e4d5}
+.products,.contact{background:#fffaf0}.product-card{background:#fff9ea;border-color:#e8dfc9}
+.product-card:nth-child(4n+1) .product-info{background:var(--pistachio)}
+.product-card:nth-child(4n+2) .product-info{background:var(--vanilla)}
+.product-card:nth-child(4n+3) .product-info{background:var(--honey)}
+.product-card:nth-child(4n+4) .product-info{background:var(--sage)}
+.product-card:hover{border-color:#c6b477;box-shadow:0 12px 28px rgba(57,55,31,.1)}
+.product-info h3{color:#30382c}.product-info p{color:#6f7465}.product-arrow.button-arrow{color:#9a742d!important}
+.product-number{background:rgba(36,60,44,.78)}.product-tag{background:#314f38;color:#fff8e7}
+.product-foot{border-color:#e1d8be;color:#727666}.text-link{color:var(--pine);border-color:#c9c1a9}
+.quote-band{background:#304c35}.quote-content blockquote{color:#fff8e8}.quote-content .eyebrow.light{color:#e6e5d6}
+.quote-source{color:#e5e4d7}.quote-source span{background:#e3bf67}
+.journey{background:#eff0df}.journey-steps article{background:#fffaf0;border-color:#e0ddc8}.journey-steps article:hover{background:#fffdf5;border-color:#c9c493}
+.step-no{color:#9b803c}.journey-steps h3{color:#30382c}.journey-steps p{color:#6d7367}
+.contact-form{background:#fffdf6;border-color:#e2dcc7;box-shadow:0 10px 30px rgba(57,55,31,.06)}
+.contact-form label{color:#455344}.contact-form input:not([type=checkbox]),.contact-form textarea,.contact-form select{background:#fffdf7;border-color:#dfdbc9;color:#30382c}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:#71865c;box-shadow:0 0 0 3px rgba(101,132,77,.14)}
+.button-cream{background:#fff9eb;border-color:#e6dcc5;color:#294735}.button-cream:hover{background:#fffdf7}
+.button-outline{border-color:rgba(246,239,217,.55);color:#fff8e8}.button-outline span{color:#efcf78}
+.footer{background:#203a2a}.footer-top,.footer-cta{border-color:rgba(246,239,217,.24)}.footer-top>p,.footer-bottom{color:#d7ddcf}.footer-cta b{color:#efd17e}
+.cookie-banner{background:#fff9e9;border-top-color:#ded5bc;box-shadow:0 -10px 34px rgba(57,55,31,.12)}
+.cookie-title{color:#2e432f}.cookie-copy p{color:#6e7365}.cookie-button{border-color:#426047;color:#294735}.cookie-accept{background:#294735;color:#fff8e9}
+.scroll-progress{background:#d2a43c}
+.button-arrow{color:inherit}.contact-form input::placeholder,.contact-form textarea::placeholder{color:#999985}
+@media(max-width:760px){
+  .nav-links{background:#fffaf0;border-top-color:#e5dcc4}.nav-links>a:not(.nav-cta){border-color:#e7dec8}
+  .hero-image{box-shadow:inset 0 0 0 1px rgba(255,248,226,.18)}
+  .trust-bar{background:#e9ecd8}.journey{background:#eff0df}.cookie-banner{background:#fff9e9}
+}
+
 /* Warm, direct food-brand treatment, adapted to this exporter rather than copied. */
 :root{--pine:#1b3d31;--pine2:#2c5844;--cream:#fff8ea;--paper:#fffdf8;--ink:#20231e;--muted:#72766e;--gold:#c97132;--line:#e6e1d7;--radius:12px;--shadow:0 12px 28px rgba(32,38,29,.075)}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:14px}
