@@ -29,3 +29,22 @@
 }
 @media(max-width:390px){.product-grid{grid-template-columns:1fr}.product-photo{height:72vw;max-height:300px}.product-info{min-height:unset}.journey-steps{grid-template-columns:1fr}.journey-steps article{min-height:unset;padding-bottom:6px}.journey-steps p{max-width:290px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.motion-ready [data-reveal]{opacity:1;transform:none;transition:none}.product-photo>img{transition:none}}
+.brand-mark .brand-star{position:absolute;top:4px;right:4px;width:15px;height:15px;background:var(--pine);color:var(--gold);fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round}
+.menu-lines{display:flex;flex-direction:column;gap:5px;width:23px;margin:auto}
+.menu-lines i{display:block;height:1.5px;width:100%;background:currentColor;transition:transform .2s,opacity .2s}
+.menu-toggle[aria-expanded="true"] .menu-lines i:first-child{transform:translateY(6.5px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] .menu-lines i:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] .menu-lines i:last-child{transform:translateY(-6.5px) rotate(-45deg)}
+.trust-icon svg,.step-icon svg,.detail-icon svg{display:block;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.step-icon svg{width:25px;height:25px}
+.detail-icon svg{width:17px;height:17px}
+.button-arrow{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;color:inherit!important;margin-left:9px!important;line-height:1}
+.button-arrow svg{display:block;width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.button-arrow.down-arrow svg{width:16px;height:16px}
+.product-arrow.button-arrow{margin-left:12px!important;color:#a17c41!important;flex:0 0 18px}
+.product-arrow.button-arrow svg{width:18px;height:18px}
+.nav-cta .button-arrow{margin-left:10px!important;color:var(--gold)!important}
+.footer-cta .button-arrow{margin-left:5px!important;color:var(--gold)!important}
+.menu-toggle:focus-visible,.nav-links a:focus-visible,.button:focus-visible,.text-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.dialog-close{width:32px;height:32px;display:grid;place-items:center}
+.dialog-close svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
