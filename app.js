@@ -10,6 +10,57 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
 }));
 document.querySelector('#year').textContent = new Date().getFullYear();
 
+// Small progressive enhancements: content remains visible when JS or motion support is unavailable.
+const progress = document.createElement('div');
+progress.className = 'scroll-progress';
+progress.setAttribute('aria-hidden', 'true');
+document.body.prepend(progress);
+const header = document.querySelector('.site-header');
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  window.requestAnimationFrame(() => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = `${maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0}%`;
+    header.classList.toggle('scrolled', window.scrollY > 12);
+    scrollTicking = false;
+  });
+}, { passive: true });
+
+const revealTargets = document.querySelectorAll('main > section:not(.hero), .product-card, .journey-steps article, .number-grid > div, .trust-bar > div, .contact-details > div');
+revealTargets.forEach((element, index) => {
+  element.dataset.reveal = '';
+  if (element.matches('.product-card, .journey-steps article, .number-grid > div, .trust-bar > div, .contact-details > div')) {
+    element.style.setProperty('--reveal-delay', `${(index % 4) * 65}ms`);
+  }
+});
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.body.classList.add('motion-ready');
+  const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  }), { threshold: 0.12, rootMargin: '0px 0px -28px 0px' });
+  revealTargets.forEach(element => revealObserver.observe(element));
+} else {
+  revealTargets.forEach(element => element.classList.add('is-visible'));
+}
+
+const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+if ('IntersectionObserver' in window) {
+  const activeObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting || !entry.target.id) return;
+    sectionLinks.forEach(link => {
+      const active = link.getAttribute('href') === `#${entry.target.id}`;
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }), { rootMargin: '-22% 0px -68% 0px' });
+  document.querySelectorAll('main section[id]').forEach(section => activeObserver.observe(section));
+}
+
 const contactForm = document.querySelector('#contactForm');
 const formStatus = document.querySelector('#formStatus');
 contactForm.addEventListener('submit', async event => {
