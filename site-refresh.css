@@ -783,3 +783,40 @@ svg {
     object-fit: cover !important;
   }
 }
+/* Ensure the mobile hero's reveal animation cannot leave its image as a blank placeholder. */
+@media (max-width: 760px) {
+  main > section:first-of-type img,
+  main > section:first-of-type picture,
+  main > section:first-of-type [class*="hero"],
+  .hero img,
+  .hero picture,
+  .hero [class*="image"],
+  .hero [class*="visual"],
+  .hero [class*="media"],
+  .hero [class*="photo"],
+  .hero-section img,
+  .hero-section picture,
+  .hero-section [class*="image"],
+  .hero-section [class*="visual"],
+  .hero-section [class*="media"],
+  .hero-section [class*="photo"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    content-visibility: visible !important;
+  }
+
+  main > section:first-of-type img,
+  .hero img,
+  .hero-section img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+  }
+}
