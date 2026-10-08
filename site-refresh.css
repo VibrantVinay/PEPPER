@@ -180,3 +180,245 @@ body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:
  .trust-bar{background:#f3ead8}.product-card{border-radius:10px}.product-photo{aspect-ratio:.8}.product-info h3{font-size:13px}
  .quote-image{opacity:.9}.journey-steps article{border-radius:9px}.reach-photo{min-height:245px}.contact-form{border-radius:10px}
 }
+/* Mobile fit and overflow guardrails */
+html {
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img,
+picture,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+svg {
+  max-width: 100%;
+}
+
+* {
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 15px;
+  }
+
+  .container,
+  .section-inner,
+  .content-wrap,
+  main > section,
+  footer > * {
+    max-width: 100%;
+  }
+
+  .container,
+  .section-inner,
+  .content-wrap {
+    padding-left: clamp(18px, 5vw, 28px);
+    padding-right: clamp(18px, 5vw, 28px);
+  }
+
+  h1 {
+    font-size: clamp(2.65rem, 12vw, 4.5rem);
+    line-height: .98;
+    overflow-wrap: anywhere;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 3.25rem);
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  p,
+  a,
+  button,
+  .eyebrow,
+  .product-meta {
+    overflow-wrap: anywhere;
+  }
+
+  .hero,
+  .hero-grid,
+  .hero-inner,
+  .hero-content,
+  .story-grid,
+  .split-section,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero,
+  .hero-grid,
+  .hero-inner,
+  .hero-content {
+    min-height: auto;
+  }
+
+  .product-grid,
+  .products-grid,
+  .feature-grid,
+  .benefits-grid,
+  .process-grid,
+  .steps-grid,
+  .stats-grid,
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-card,
+  .feature-card,
+  .process-card,
+  .step-card,
+  .stat-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .product-card img,
+  .product-image,
+  .feature-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .product-card h3,
+  .feature-card h3 {
+    font-size: clamp(1.15rem, 4.7vw, 1.55rem);
+    line-height: 1.12;
+  }
+
+  .button,
+  .btn,
+  button,
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
+  .button,
+  .btn {
+    white-space: normal;
+  }
+
+  .cookie-banner,
+  .cookie-consent,
+  .cookie-notice {
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto;
+    max-width: none;
+  }
+
+  .cookie-banner .actions,
+  .cookie-consent .actions,
+  .cookie-notice .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .product-grid,
+  .products-grid,
+  .feature-grid,
+  .benefits-grid,
+  .process-grid,
+  .steps-grid,
+  .stats-grid,
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product-card img,
+  .product-image,
+  .feature-card img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .hero-actions,
+  .button-row,
+  .cta-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions > *,
+  .button-row > *,
+  .cta-row > * {
+    width: 100%;
+  }
+}
+/* Keep mobile sizing rules ahead of any framework or component defaults. */
+@media (max-width: 760px) {
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+  }
+
+  body img,
+  body picture,
+  body video,
+  body canvas,
+  body iframe {
+    max-width: 100% !important;
+  }
+
+  body .container,
+  body .section-inner,
+  body .content-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body .product-grid,
+  body .products-grid,
+  body .feature-grid,
+  body .benefits-grid,
+  body .process-grid,
+  body .steps-grid,
+  body .stats-grid,
+  body .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  body .product-card,
+  body .feature-card,
+  body .process-card,
+  body .step-card,
+  body .stat-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body .product-grid,
+  body .products-grid,
+  body .feature-grid,
+  body .benefits-grid,
+  body .process-grid,
+  body .steps-grid,
+  body .stats-grid,
+  body .footer-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
