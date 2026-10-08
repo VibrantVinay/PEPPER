@@ -650,3 +650,108 @@ svg {
     width: 100% !important;
   }
 }
+/* Repair the mobile layouts visible on the live page: hero layering and tall media wells. */
+@media (max-width: 760px) {
+  main > section:first-of-type,
+  .hero,
+  .hero-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: clamp(20px, 5vw, 32px) !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden;
+  }
+
+  main > section:first-of-type > *,
+  .hero > *,
+  .hero-section > * {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
+  }
+
+  main > section:first-of-type img,
+  .hero img,
+  .hero-section img,
+  .hero picture,
+  .hero-visual,
+  .hero-image,
+  .hero-media {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+  }
+
+  main > section:first-of-type h1,
+  .hero h1,
+  .hero-section h1 {
+    position: relative !important;
+    z-index: 1;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  .product-card {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .product-card > :first-child:not(img),
+  .product-card figure,
+  .product-card .product-media,
+  .product-card .product-visual,
+  .product-card .product-image-wrap,
+  .product-card .product-card__media,
+  .product-card [class*="media"],
+  .product-card [class*="visual"] {
+    position: relative !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 3 !important;
+    overflow: hidden !important;
+  }
+
+  .product-card img,
+  .product-card picture,
+  .product-card figure img,
+  .product-card [class*="media"] img,
+  .product-card [class*="visual"] img {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+  }
+
+  .product-card > :last-child,
+  .product-card .product-info,
+  .product-card .product-details {
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+    margin-top: 0 !important;
+  }
+}
