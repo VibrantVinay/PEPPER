@@ -820,3 +820,35 @@ svg {
     object-fit: cover !important;
   }
 }
+/* Local artwork sits behind the hero image as a fallback if its remote source fails. */
+@media (max-width: 760px) {
+  body main > section:first-of-type img,
+  body .hero img,
+  body .hero-section img {
+    min-height: clamp(220px, 52vw, 340px) !important;
+    height: clamp(220px, 52vw, 340px) !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    background-color: #e7e8d2 !important;
+    background-image: url("assets/malabar-hero-fallback.svg") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+  }
+
+  body main > section:first-of-type [class*="hero"][class*="image"],
+  body main > section:first-of-type [class*="hero"][class*="visual"],
+  body main > section:first-of-type [class*="hero"][class*="media"],
+  body .hero [class*="image"],
+  body .hero [class*="visual"],
+  body .hero [class*="media"],
+  body .hero-section [class*="image"],
+  body .hero-section [class*="visual"],
+  body .hero-section [class*="media"] {
+    background-color: #e7e8d2 !important;
+    background-image: url("assets/malabar-hero-fallback.svg") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+  }
+}
