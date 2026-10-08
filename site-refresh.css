@@ -92,3 +92,40 @@ body{background:var(--paper);color:var(--ink);font-size:14px;letter-spacing:.002
  .journey-steps{grid-template-columns:1fr 1fr}.journey-steps article{min-height:190px;padding:17px 11px}.reach-copy{padding-left:6%;padding-right:6%}.reach-stats{gap:9px}.reach-stats div{gap:4px}.reach-stats strong{font-size:11px}.contact-form{padding:20px 14px}.form-row{grid-template-columns:1fr;gap:0}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Warm, direct food-brand treatment, adapted to this exporter rather than copied. */
+:root{--pine:#1b3d31;--pine2:#2c5844;--cream:#fff8ea;--paper:#fffdf8;--ink:#20231e;--muted:#72766e;--gold:#c97132;--line:#e6e1d7;--radius:12px;--shadow:0 12px 28px rgba(32,38,29,.075)}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:14px}
+.site-header{background:rgba(255,253,248,.97);border-bottom-color:#eee9df}
+.brand-mark{border-radius:11px;background:var(--pine)}.brand-mark .brand-star{background:transparent;color:#f2bd63}
+.hero{background:#f5f1e6}.hero-image{inset:28px 5.5% 28px 54%;border-radius:18px;background-image:url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=1700&q=88');background-position:center 48%}
+.hero-shade{inset:28px 5.5% 28px 54%;border-radius:18px;background:linear-gradient(0deg,rgba(20,38,28,.46),transparent 58%)}
+.hero h1,.intro h2,.section-heading h2,.contact h2,.numbers h2,.reach h2{font-family:var(--sans);font-weight:700;letter-spacing:-.052em}
+.hero h1{font-size:clamp(56px,6.7vw,86px);line-height:1.01}.hero h1 em,.intro h2 em,.section-heading h2 em,.contact h2 em,.numbers h2 em,.reach h2 em{font-style:normal;font-weight:700;color:var(--gold)}
+.hero-content .eyebrow.light{color:#606b5f}.hero-content>p{font-size:14px;line-height:1.8;color:#596158}.hero-stamp{width:108px;height:108px;border:1px solid rgba(255,255,255,.7);background:rgba(35,57,40,.26);backdrop-filter:blur(3px)}
+.button,.nav-cta,.button-outline,.cookie-button{border-radius:7px}.button-cream{background:#fff;border-color:#eee4d2}.button-green,.nav-cta{background:var(--pine)}
+.trust-bar{background:#f3ead8;border:0}.trust-icon{color:var(--pine2)}
+.intro-image-wrap>img{border-radius:15px}.image-note{border-radius:8px;background:#fffdf8;box-shadow:0 8px 24px rgba(32,38,29,.1)}.image-note span{color:#947044}
+.intro h2,.section-heading h2,.contact h2{font-size:clamp(38px,4vw,53px)}.intro-copy .lead{color:#414a40;font-size:14px}
+.numbers{background:#193a2d}.numbers h2 em,.reach h2 em{color:#f0bd67}.number-grid>div{border-bottom-color:rgba(255,255,255,.22)}.number-grid strong{font-family:var(--sans);font-size:17px;font-weight:700;color:#f2c579}.number-grid label{font-size:10px;color:#edf0e8}
+.products{background:#fffdf8}.product-card{border-color:#e9e3d8;border-radius:12px;background:#fff;box-shadow:none}.product-card:hover{box-shadow:0 12px 30px rgba(32,38,29,.1);border-color:#d9c8a6}
+.product-photo{aspect-ratio:.84}.product-photo>img{transition:transform .65s cubic-bezier(.2,.7,.2,1)}.product-number{background:rgba(23,45,35,.78);border-radius:4px}.product-tag{border-radius:4px;background:var(--pine)}
+.product-info{padding:14px 14px 16px}.product-info h3{font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:-.025em}.product-info p{font-size:9px;color:#747a70}
+.product-arrow.button-arrow{color:var(--pine)!important}.product-foot{border-color:#e8e1d6}
+.quote-band{background:#244232}.quote-image{background-image:url('https://www.spiceforest.in/img/spice-plantation-munnar-01.jpg');background-position:center 47%;opacity:.85}.quote-content blockquote{font-family:var(--sans);font-weight:700;letter-spacing:-.04em;font-size:clamp(28px,3.25vw,40px)}
+.journey{background:#f7f3e9}.journey-steps article{background:#fffdf8;border-radius:11px;border-color:#e9e2d7}.journey-steps h3{font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:-.02em}.step-icon{color:var(--pine2)}
+.reach{background:#1b3d31}.reach-photo{background-image:url('https://upload.wikimedia.org/wikipedia/commons/7/74/India_-_Kerala_-_062_-_spice_plantation_-_pepper_%282077696203%29.jpg');background-position:center 50%}
+.reach-stats div{border-top-color:rgba(255,255,255,.3)}.reach-stats strong{font-family:var(--sans);font-weight:700;color:#f1c475}
+.contact{background:#fffdf8}.contact-form{border-radius:12px;border-color:#e8e3d9;background:#fff;box-shadow:0 10px 30px rgba(33,42,33,.06)}
+.contact-form input:not([type=checkbox]),.contact-form textarea,.contact-form select{border-radius:6px;background:#fffdfa;border-color:#e5e1d8}.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:#668b73;box-shadow:0 0 0 3px rgba(61,111,79,.13)}
+.footer{background:#18372a}.footer-top{border-bottom-color:rgba(255,255,255,.2)}
+.cookie-banner{background:#fffdf8;border-top-color:#e8e1d6}.cookie-button{border-radius:6px}
+.signature{font-family:var(--sans);font-style:normal;font-size:15px;font-weight:700;letter-spacing:-.02em;color:var(--pine)}
+.image-note b{font-family:var(--sans);font-weight:700;letter-spacing:-.025em}
+.hero-stamp span{font:600 10px/1.35 var(--sans);letter-spacing:.12em}
+.footer-top>p{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:-.015em}
+@media(max-width:760px){
+ .hero{padding-top:43px}.hero-image,.hero-shade{border-radius:14px}.hero h1{font-size:clamp(50px,11.5vw,72px)}
+ .trust-bar{background:#f3ead8}.product-card{border-radius:10px}.product-photo{aspect-ratio:.8}.product-info h3{font-size:13px}
+ .quote-image{opacity:.9}.journey-steps article{border-radius:9px}.reach-photo{min-height:245px}.contact-form{border-radius:10px}
+}
