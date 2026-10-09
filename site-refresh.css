@@ -1041,3 +1041,24 @@ svg {
     margin-top: 8px !important;
   }
 }
+/* Keep a visible gap between the consent checkbox and its label. */
+@media (max-width: 760px) {
+  body label:has(input[type="checkbox"]),
+  body .consent-row,
+  body .contact-consent,
+  body .form-consent {
+    column-gap: 12px !important;
+  }
+
+  body input[type="checkbox"] {
+    margin-right: 12px !important;
+  }
+
+  body label input[type="checkbox"] {
+    margin-right: 0 !important;
+  }
+
+  body input[type="checkbox"] + label {
+    margin-left: 12px !important;
+  }
+}
