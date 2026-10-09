@@ -1062,3 +1062,32 @@ svg {
     margin-left: 12px !important;
   }
 }
+/* Reduce excess mobile space beneath the hero's location oval. */
+@media (max-width: 760px) {
+  body main > section:first-of-type,
+  body .hero,
+  body .hero-section {
+    height: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 16px !important;
+  }
+
+  body main > section:first-of-type :is(
+    .hero-stamp,
+    .hero-seal,
+    .location-stamp,
+    .location-seal,
+    .spice-coast,
+    [class*="stamp"],
+    [class*="seal"]
+  ) {
+    margin-bottom: 0 !important;
+  }
+
+  body main > section:first-of-type + section,
+  body .trust-strip,
+  body .values-strip {
+    margin-top: 0 !important;
+  }
+}
