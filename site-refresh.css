@@ -852,3 +852,22 @@ svg {
     background-size: cover !important;
   }
 }
+/* Mobile-only visual fallback for the hero media panel. */
+@media (max-width: 760px) {
+  main > section:first-of-type {
+    position: relative !important;
+  }
+
+  main > section:first-of-type::after {
+    content: "" !important;
+    position: absolute !important;
+    z-index: 2 !important;
+    top: clamp(175px, 42vw, 240px) !important;
+    left: clamp(20px, 5.5vw, 30px) !important;
+    right: clamp(20px, 5.5vw, 30px) !important;
+    height: clamp(170px, 38vw, 260px) !important;
+    border-radius: 0 0 18px 18px !important;
+    background: #e7e8d2 url("assets/malabar-hero-fallback.svg") center / cover no-repeat !important;
+    pointer-events: none !important;
+  }
+}
