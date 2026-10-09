@@ -871,3 +871,41 @@ svg {
     pointer-events: none !important;
   }
 }
+/* Flow the mobile hero image naturally instead of absolutely over the copy. */
+@media (max-width: 760px) {
+  main > section:first-of-type {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding-top: 24px !important;
+    padding-bottom: 40px !important;
+  }
+
+  main > section:first-of-type::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  main > section:first-of-type::before {
+    content: "" !important;
+    display: block !important;
+    position: relative !important;
+    inset: auto !important;
+    order: -1 !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    margin: 0 0 24px !important;
+    border-radius: 16px !important;
+    background: #e7e8d2 url("assets/malabar-hero-fallback.svg") center / cover no-repeat !important;
+  }
+
+  main > section:first-of-type > div:empty,
+  main > section:first-of-type .hero-visual:empty,
+  main > section:first-of-type .hero-image:empty,
+  main > section:first-of-type .hero-media:empty {
+    display: none !important;
+  }
+}
