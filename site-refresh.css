@@ -909,3 +909,60 @@ svg {
     display: none !important;
   }
 }
+/* Keep the enquiry consent checkbox and its copy together on mobile. */
+@media (max-width: 760px) {
+  body form :is(div, p, fieldset):has(> input[type="checkbox"]),
+  body form :is(div, p, fieldset):has(> input[type="checkbox"] + label),
+  body .contact-form :is(div, p, fieldset):has(> input[type="checkbox"]),
+  body .contact-form :is(div, p, fieldset):has(> input[type="checkbox"] + label),
+  body .consent-row,
+  body .contact-consent,
+  body .form-consent {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+
+  body form input[type="checkbox"],
+  body .contact-form input[type="checkbox"],
+  body .consent-row input[type="checkbox"],
+  body .contact-consent input[type="checkbox"],
+  body .form-consent input[type="checkbox"] {
+    flex: 0 0 18px !important;
+    width: 18px !important;
+    min-width: 18px !important;
+    height: 18px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    accent-color: #294735;
+  }
+
+  body form input[type="checkbox"] + label,
+  body .contact-form input[type="checkbox"] + label,
+  body .consent-row label,
+  body .contact-consent label,
+  body .form-consent label,
+  body label:has(> input[type="checkbox"]) {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    font-size: clamp(11px, 3.1vw, 13px) !important;
+    line-height: 1.35 !important;
+  }
+
+  body label:has(> input[type="checkbox"]) {
+    flex-direction: row !important;
+    gap: 10px !important;
+  }
+}
