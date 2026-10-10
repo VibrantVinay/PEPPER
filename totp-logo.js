@@ -26,4 +26,32 @@
       if (/^\s*M(?:\s|$)/.test(value)) node.nodeValue = value.replace(/^(\s*)M/, '$1T');
     }
   });
+
+  // Catch marks built from text or CSS even when the brand wordmark is hidden on mobile.
+  const markNodes = [...document.querySelectorAll('header *, footer *, nav *, [class*="logo" i], [class*="brand" i], [class*="mark" i], [id*="logo" i], [id*="brand" i]')];
+  markNodes.forEach((element, index) => {
+    const identity = `${element.className?.baseVal || element.className || ''} ${element.id || ''}`.toLowerCase();
+    const isMark = /logo|brand|mark|monogram|symbol/.test(identity);
+    if (!isMark) return;
+
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    let textNode;
+    while ((textNode = walker.nextNode())) {
+      const value = textNode.nodeValue || '';
+      if (/^\s*M\s*$/.test(value)) textNode.nodeValue = value.replace('M', 'T');
+    }
+
+    ['::before', '::after'].forEach((pseudo) => {
+      const content = getComputedStyle(element, pseudo).content.replace(/["']/g, '').trim();
+      if (content !== 'M') return;
+      if (!element.id) element.id = `totp-letter-mark-${index}`;
+      let style = document.getElementById('totp-logo-letter-style');
+      if (!style) {
+        style = document.createElement('style');
+        style.id = 'totp-logo-letter-style';
+        document.head.appendChild(style);
+      }
+      style.textContent += `#${CSS.escape(element.id)}${pseudo}{content:"T"!important}`;
+    });
+  });
 })();
