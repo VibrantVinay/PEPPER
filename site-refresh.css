@@ -1204,3 +1204,221 @@ svg {
     margin-bottom: 14px !important;
   }
 }
+/* Use the original desktop hero media on mobile; remove the temporary illustration overlay. */
+@media (max-width: 900px) {
+  body main > section:first-of-type::before,
+  body main > section:first-of-type::after {
+    content: none !important;
+    display: none !important;
+    background-image: none !important;
+  }
+
+  body main > section:first-of-type :is(
+    .hero-visual,
+    .hero-image,
+    .hero-media,
+    .hero-art,
+    .hero-photo,
+    figure,
+    picture
+  ),
+  body .hero :is(
+    .hero-visual,
+    .hero-image,
+    .hero-media,
+    .hero-art,
+    .hero-photo,
+    figure,
+    picture
+  ),
+  body .hero-section :is(
+    .hero-visual,
+    .hero-image,
+    .hero-media,
+    .hero-art,
+    .hero-photo,
+    figure,
+    picture
+  ) {
+    display: block !important;
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10 !important;
+    margin: 0 0 20px !important;
+    overflow: hidden !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  body main > section:first-of-type :is(.hero-visual, .hero-image, .hero-media):empty,
+  body .hero :is(.hero-visual, .hero-image, .hero-media):empty,
+  body .hero-section :is(.hero-visual, .hero-image, .hero-media):empty {
+    display: block !important;
+  }
+
+  body main > section:first-of-type img,
+  body .hero img,
+  body .hero-section img {
+    display: block !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10 !important;
+    object-fit: cover !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+  }
+}
+.totp-journey {
+  padding: clamp(72px, 10vw, 144px) clamp(24px, 7vw, 112px);
+  background: var(--paper, #fffaf0);
+  color: var(--ink, #30382c);
+}
+
+.totp-journey__intro {
+  max-width: 760px;
+  margin-bottom: clamp(34px, 5vw, 64px);
+}
+
+.totp-journey__eyebrow {
+  margin: 0 0 16px;
+  color: var(--pine2, #587149);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.totp-journey__intro h2 {
+  max-width: 720px;
+  margin: 0 0 18px;
+  color: var(--ink, #30382c);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: .98;
+}
+
+.totp-journey__intro > p:last-child,
+.totp-journey__steps p,
+.totp-journey__export > p {
+  color: var(--muted, #747666);
+  line-height: 1.7;
+}
+
+.totp-journey__steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(24px, 5vw, 72px);
+  margin: 0 0 clamp(56px, 8vw, 100px);
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line, #e1d8be);
+}
+
+.totp-journey__steps li {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 16px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line, #e1d8be);
+}
+
+.totp-journey__steps li > span {
+  color: var(--gold, #b58b36);
+  font-size: 12px;
+  letter-spacing: .12em;
+}
+
+.totp-journey__steps h3,
+.totp-journey__export h3 {
+  margin: 0 0 8px;
+  color: var(--pine, #294735);
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+}
+
+.totp-journey__steps p {
+  margin: 0;
+}
+
+.totp-journey__export {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr auto;
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+  padding: clamp(24px, 4vw, 48px);
+  border-radius: 18px;
+  background: var(--pistachio, #e7ecd5);
+}
+
+.totp-journey__export .totp-journey__eyebrow {
+  margin-bottom: 10px;
+}
+
+.totp-journey__export h3 {
+  margin: 0;
+}
+
+.totp-journey__export > p {
+  margin: 0;
+}
+
+.totp-journey__export a {
+  color: var(--pine, #294735);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.totp-journey__export a span {
+  margin-left: 10px;
+  color: var(--gold, #b58b36);
+}
+
+@media (max-width: 760px) {
+  .totp-journey {
+    padding: 64px 22px;
+  }
+
+  .totp-journey__intro {
+    margin-bottom: 28px;
+  }
+
+  .totp-journey__intro h2 {
+    font-size: clamp(2.4rem, 11vw, 4rem);
+  }
+
+  .totp-journey__steps {
+    grid-template-columns: minmax(0, 1fr);
+    margin-bottom: 36px;
+  }
+
+  .totp-journey__steps li {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+    padding: 20px 0;
+  }
+
+  .totp-journey__export {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 24px;
+  }
+
+  .totp-journey__export a {
+    white-space: normal;
+  }
+}
