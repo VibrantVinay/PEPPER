@@ -1178,3 +1178,29 @@ svg {
     margin: 0 !important;
   }
 }
+@media (max-width: 900px) {
+  body main > section:first-of-type :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ),
+  body .hero :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ) {
+    margin-bottom: 14px !important;
+  }
+}
