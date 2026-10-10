@@ -1091,3 +1091,90 @@ svg {
     margin-top: 0 !important;
   }
 }
+/* Stack hero actions on mobile and leave a clear gap between them. */
+@media (max-width: 900px) {
+  body main > section:first-of-type :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ),
+  body .hero :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  body main > section:first-of-type :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ) > :first-child,
+  body .hero :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ) > :first-child {
+    width: 100% !important;
+    max-width: 360px !important;
+  }
+
+  body main > section:first-of-type :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ) > :nth-child(2),
+  body .hero :is(
+    .hero-actions,
+    .hero-action-row,
+    .hero-buttons,
+    .hero-ctas,
+    .hero-links,
+    .button-row,
+    .cta-row,
+    [class*="hero-action"],
+    [class*="hero-cta"]
+  ) > :nth-child(2) {
+    align-self: flex-start !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+}
