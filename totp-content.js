@@ -9,10 +9,11 @@
     textNodes.forEach((node) => {
       node.nodeValue = node.nodeValue
         .replace(/Malabar Crown/gi, 'TOTP')
+        .replace(/Kozhikode/gi, 'Thalassery')
         .replace(/Distinctive by nature\.?/gi, 'Thalassery pepper, prepared for trade.')
         .replace(/Need a particular origin, cut or specification\?/gi, 'Need a grade, pack format or destination specification?');
 
-      if (/SPICE EXPORTS\s*[·•]\s*KOZHIKODE/i.test(node.nodeValue)) {
+      if (/SPICE EXPORTS\s*[·•]\s*THALASSERY/i.test(node.nodeValue)) {
         node.nodeValue = 'PEPPER EXPORTS · THALASSERY ORIGIN';
       }
       if (/PEPPER AND SPICES FROM KOZHIKODE/i.test(node.nodeValue)) {
@@ -20,10 +21,26 @@
       }
     });
 
+    document.querySelectorAll('[alt], [title], [aria-label]').forEach((element) => {
+      ['alt', 'title', 'aria-label'].forEach((attribute) => {
+        const value = element.getAttribute(attribute);
+        if (value && /Kozhikode/i.test(value)) {
+          element.setAttribute(attribute, value.replace(/Kozhikode/gi, 'Thalassery'));
+        }
+      });
+    });
+
     const brandLeaves = document.querySelectorAll('header *, footer *, [class*="brand"] *, [class*="logo"] *');
     brandLeaves.forEach((element) => {
       if (element.children.length === 0 && /MALABAR\s+CROWN/i.test(element.textContent)) {
         element.textContent = 'TOTP';
+      }
+    });
+
+    document.querySelectorAll('header *, footer *, header svg text, footer svg text').forEach((element) => {
+      if (element.children.length === 0 && element.textContent.trim() === 'M') {
+        element.textContent = 'T';
+        element.classList.add('totp-logo-letter');
       }
     });
 
@@ -37,6 +54,26 @@
       );
       if (copy) {
         copy.textContent = 'We bring Thalassery-origin pepper to buyers with clear specifications, careful preparation and export coordination.';
+      }
+
+      const images = Array.from(document.querySelectorAll('img'));
+      const actualPepperImage = images.find((image) =>
+        /pepper|spice/i.test(`${image.alt} ${image.currentSrc} ${image.src}`)
+        && !/malabar-hero-fallback|totp-logo/i.test(`${image.alt} ${image.currentSrc} ${image.src}`)
+      ) || images.find((image) => image.closest('[class*="product"]')
+        && !/malabar-hero-fallback|totp-logo/i.test(`${image.alt} ${image.currentSrc} ${image.src}`));
+      const heroImage = hero.querySelector('picture img, figure img, img:not([alt*="logo" i])');
+      const heroMedia = hero.querySelector('.hero-visual, .hero-image, .hero-media, .hero-art, .hero-photo, figure, picture');
+      if (actualPepperImage && heroImage && /malabar-hero-fallback/i.test(`${heroImage.currentSrc} ${heroImage.src}`)) {
+        heroImage.src = actualPepperImage.currentSrc || actualPepperImage.src;
+        heroImage.removeAttribute('srcset');
+      }
+      if (actualPepperImage && heroMedia) {
+        heroMedia.style.setProperty('background-image', `url("${actualPepperImage.currentSrc || actualPepperImage.src}")`, 'important');
+        heroMedia.style.setProperty('background-size', 'cover', 'important');
+        heroMedia.style.setProperty('background-position', 'center', 'important');
+        heroMedia.setAttribute('role', 'img');
+        heroMedia.setAttribute('aria-label', actualPepperImage.alt || 'Thalassery pepper and spices');
       }
     }
 
@@ -68,7 +105,7 @@
       <aside class="totp-journey__export">
         <div><p class="totp-journey__eyebrow">EXPORT DETAILS</p><h3>Clear terms before dispatch.</h3></div>
         <p>Share your destination, required grade, quantity and preferred pack format. We can confirm the available specification, documentation requirements and shipment plan for your enquiry.</p>
-        <a href="#contact">Discuss an export enquiry <span aria-hidden="true">↗</span></a>
+        <a href="#contact">Discuss an export enquiry <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
       </aside>`;
 
     const contactSection = document.querySelector('#contact, [id*="contact"]')?.closest('section')
